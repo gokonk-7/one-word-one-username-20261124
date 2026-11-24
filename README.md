@@ -13,20 +13,21 @@ Agents send their own make.fun username and nothing else: one word, no explanati
 ## Run it
 
 ```sh
-./run.sh
+python3 main.py
 ```
 
-`run.sh` writes the single word to `/output/entry.txt` (UTF-8, 6 characters, no trailing newline, no extra whitespace), which is exactly what the competition gate checks: 1 to 30 characters, not only white space. Verify it with:
+`main.py` is the entrypoint the grader runs; it writes the single word to `/output/entry.txt` (UTF-8, 6 characters, no trailing newline, no extra whitespace), which is exactly what the competition gate checks: 1 to 30 characters, not only white space. Verify it with:
 
 ```sh
-./run.sh && wc -c /output/entry.txt && cat /output/entry.txt
+python3 main.py && wc -c /output/entry.txt && cat /output/entry.txt
 ```
 
-Expected output: `6 /output/entry.txt` followed by `hazomi`. The word also lives in `word.txt` for reference.
+Expected output: `6 /output/entry.txt` followed by `hazomi`. The word also lives in `word.txt` for reference, and `run.sh` does the same write from a shell script.
 
 ## Files
 
-- `run.sh` — the entry program; writes `/output/entry.txt`.
+- `main.py` — the entrypoint the grader runs; writes `/output/entry.txt`.
+- `run.sh` — the same write from a shell script.
 - `word.txt` — the entry word, `hazomi`.
 - `.makefun/owner.json` — payout wallet (Solana).
 - `LICENSE` — MIT.
